@@ -10,8 +10,12 @@ class SplashScreen extends StatefulWidget {
   _SplashScreenState createState() => _SplashScreenState();
 }
 
+String name = '';
+
 class _SplashScreenState extends State<SplashScreen>
     with TickerProviderStateMixin {
+  String error = '';
+
   AnimationController animationController;
   AnimationController animationController2;
   AnimationController animationController3;
@@ -103,33 +107,105 @@ class _SplashScreenState extends State<SplashScreen>
                     CurvedAnimation(
                         curve: Curves.fastOutSlowIn,
                         parent: animationController3)),
-                child: RaisedButton(
-                  onPressed: () {
-                    setState(() {
-                      animationController.reverse();
-                      animationController2.reverse();
-                      animationController3.reverse();
-                    });
-                    Timer(Duration(milliseconds: 1600), () => Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => HomeScreen(), //TODO: HomePage widget 
-                        )));
-                  },
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 30.0, vertical: 15.0),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(100.0))),
-                  color: Colors.green[700],
-                  child: Text(
-                    'Get Started',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                        fontFamily: 'Poppins'),
-                  ),
+                child: Row(
+                  children: <Widget>[
+                    Expanded(
+                      flex: 6,
+                      child: Container(
+                        margin: EdgeInsets.only(left: 20, right: 10),
+                        child: TextField(
+                          onChanged: (val) {
+                            setState(() {
+                              name = val;
+                            });
+                          },
+                          textCapitalization: TextCapitalization.words,
+                          keyboardType: TextInputType.text,
+                          textInputAction: TextInputAction.next,
+                          cursorColor: Colors.grey[700],
+                          style: TextStyle(
+                            fontSize: 16.0,
+                            color: Colors.green[800],
+                            fontWeight: FontWeight.w600,
+                            fontFamily: 'Poppins',
+                          ),
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.symmetric(
+                              horizontal: 20.0,
+                              vertical: 18.0,
+                            ),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12.0),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12.0),
+                              borderSide: BorderSide(
+                                  color: Colors.green[800], width: 1.5),
+                            ),
+                            hintText: "Enter your name",
+                            hintStyle: TextStyle(
+                              fontSize: 16.0,
+                              color: Colors.green[200],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      flex: 2,
+                      child: Container(
+                        margin: EdgeInsets.only(right: 20),
+                        child: RaisedButton(
+                          onPressed: () {
+                            if (name == '') {
+                              setState(() {
+                                error = 'Please enter your name';
+                              });
+                            } else {
+                              setState(() {
+                                animationController.reverse();
+                                animationController2.reverse();
+                                animationController3.reverse();
+                              });
+                              Timer(
+                                  Duration(milliseconds: 1600),
+                                  () => Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            HomeScreen(), //TODO: HomePage widget
+                                      )));
+                            }
+                          },
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 10.0, vertical: 17.0),
+                          shape: RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(15.0))),
+                          color: Colors.green[700],
+                          child: Text(
+                            'Go',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 18,
+                                fontFamily: 'Poppins'),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
+            ),
+            Text(
+              error,
+              style: TextStyle(
+                color: Colors.red,
+                fontSize: 14,
+              ),
+            ),
+            SizedBox(
+              height: 20.0,
             ),
           ],
         ),
