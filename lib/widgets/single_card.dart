@@ -5,27 +5,35 @@ class SingleCard extends StatelessWidget {
   final String imageUrl;
   final String title;
   final String description;
+  final String header;
 
   SingleCard({
     @required this.imageUrl,
     @required this.title,
     @required this.description,
+    @required this.header,
   });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){},
+      onTap: () {},
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.grey[200],
+          color: Colors.white,
           borderRadius: BorderRadius.circular(20.0),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black12,
+              offset: Offset(0.0, 3.0),
+              blurRadius: 6.0,
+            )
+          ],
         ),
         padding: EdgeInsets.all(12.0),
         child: Column(
           children: <Widget>[
-            Expanded(
-                child: Container(
+            Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20.0),
                 color: Colors.grey[50],
@@ -33,26 +41,45 @@ class SingleCard extends StatelessWidget {
               child: Stack(
                 children: <Widget>[
                   Center(
-                    child: Image(image: AssetImage(imageUrl), height: 150.0, width: 150.0,),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                      child: Image.asset(
+                        imageUrl,
+                        fit: BoxFit.fitWidth,
+                      ),
+                    ),
                   ),
                   Positioned(
-                    bottom: 25.0,
-                    left: 25.0,
-                    child: Text(
-                      title,
-                      style: TextStyle(
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                        fontFamily: "Poppins",
+                    bottom: 15.0,
+                    left: 15.0,
+                    child: Container(
+                      padding: EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                        color: Colors.white38,
+                      ),
+                      alignment: Alignment.center,
+                      child: Text(
+                        title,
+                        style: TextStyle(
+                          shadows: [
+                            BoxShadow(
+                                color: Colors.black12,
+                                offset: Offset(0.0, 2.0),
+                                blurRadius: 4),
+                          ],
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                          fontFamily: "Poppins",
+                        ),
                       ),
                     ),
                   ),
                 ],
               ),
-            )),
+            ),
             Container(
-
               padding: EdgeInsets.all(12.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -71,16 +98,18 @@ class SingleCard extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(height: 10.0),
+                  SizedBox(height: 6.0),
                   Align(
                     alignment: Alignment.centerRight,
                     child: GestureDetector(
-                      onTap: (){
-                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => InsectDetailScreen(
-                          imageUrl: imageUrl,
-                          title: title,
-                          description: description,
-                        )));
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => InsectDetailScreen(
+                                  imageUrl: imageUrl,
+                                  title: title,
+                                  description: description,
+                                  header: header,
+                                )));
                       },
                       child: Text(
                         "Show more",
