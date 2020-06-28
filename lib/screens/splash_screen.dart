@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:ecofriendlyinsects/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -103,11 +105,16 @@ class _SplashScreenState extends State<SplashScreen>
                         parent: animationController3)),
                 child: RaisedButton(
                   onPressed: () {
-                    Navigator.pushReplacement(
+                    setState(() {
+                      animationController.reverse();
+                      animationController2.reverse();
+                      animationController3.reverse();
+                    });
+                    Timer(Duration(milliseconds: 1600), () => Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
                           builder: (context) => HomeScreen(), //TODO: HomePage widget 
-                        ));
+                        )));
                   },
                   padding:
                       EdgeInsets.symmetric(horizontal: 30.0, vertical: 15.0),
