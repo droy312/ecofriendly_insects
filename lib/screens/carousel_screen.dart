@@ -14,40 +14,62 @@ class _CarouselScreenState extends State<CarouselScreen> {
 
   List<CardItem> items = [
     CardItem(
-      imageUrl: "assets/airpods_pro.png",
+      imageUrl: "assets/bee1.jpg",
       title: "Bee",
       description:
-          "Description description description description description description description",
+          "It's said that bees contribute more than \$20 billion to the value of crop production in the United States, pollinating plants such as:" +
+
+"\napples" + 
+"\ncranberries" +
+"\nblueberries"
+"\ncherries" +
+"\nmelons" +
+"\nalmonds" +
+"\nbroccoli" +
+"\nOf course, they also provide honey in addition to helping to pollinate our plants.",
+      header: 'Helpful Honey Bees',
     ),
     CardItem(
-      imageUrl: "assets/airpods_pro.png",
-      title: "Bee",
+      imageUrl: "assets/ladybug1.jpg",
+      title: "Ladybug",
       description:
-          "Description description description description description description description",
+          "One of the most famous of all helpful insects is the lovely ladybug, also known as ladybirds or lady beetles. In fact, these little guys are so revered that even those who are terrified of most insects still find spotted ladybugs to be charming. It's no wonder that aside from their cute looks, they are also great for gardens, and they eat pesky aphids, whiteflies and other insects that destroy plants. In fact, a ladybug can eat up to 5,000 aphids in its lifetime.",
+      header: 'Lovely Little Ladybugs',
     ),
     CardItem(
-      imageUrl: "assets/airpods_pro.png",
-      title: "Bee",
+      imageUrl: "assets/mantis1.jpg",
+      title: "Mantis",
       description:
-          "Description description description description description description description",
+          "It's easy to be intimidated by praying mantises given that they look creepy and that you probably know that the females are known to eat the heads off of their mates. That being said, they're actually great garden insects, as they are skilled predators that can instantly snag and kill garden pests such as:" + 
+
+"\ngrubs" +
+"\naphids" +
+"\ngrasshoppers" +
+"\ncrickets" +
+"\nflies" +
+"\nmore",
+      header: 'Proud Praying Mantises',
     ),
     CardItem(
-      imageUrl: "assets/airpods_pro.png",
-      title: "Bee",
+      imageUrl: "assets/lacewing1.jpg",
+      title: "Lacewing",
       description:
-          "Description description description description description description description",
+          "Green lacewings may not be as famous as ladybugs, but they are also great hunters of pests such as aphids, thrips, mealybugs, small caterpillars, mites and whiteflies as well, eating them both as larvae and adults. The mother lacewings lay eggs among the larvae of whitefly and aphid colonies, and the lacewing starts eating these pests from birth. They are aggressive predators, but if you want to help them, it's important to keep ants away from your garden since ants eat the eggs of lacewings.",
+      header: 'Great Green Lacewings',
     ),
     CardItem(
-      imageUrl: "assets/airpods_pro.png",
-      title: "Bee",
+      imageUrl: "assets/dragonfly1.jpg",
+      title: "Dragonfly",
       description:
-          "Description description description description description description description",
+          "Dragonflies are like ladybugs in that many insect haters still appreciate their beauty. They are also easy to love because they prey on pesky flying insects including mosquitoes, flies, moths, whiteflies and fruit flies. They also eat the larvae of these creatures, stopping them before they can cause damage.",
+      header: 'Beautifully Daring Dragonflies',
     ),
     CardItem(
-      imageUrl: "assets/airpods_pro.png",
-      title: "Bee",
+      imageUrl: "assets/earthworm1.jpg",
+      title: "Earthworm",
       description:
-          "Description description description description description description description",
+          "Yes, earthworms aren't much to look at, but they are incredibly beneficial, improving the soil wherever they go. Their excrement enriches soil and controls its pH. As if that's not enough, their tunnels aerate the dirt, allowing water to reach the roots of plants more easily. The more earthworms there are in soil, the better its quality.",
+      header: 'Squirmy Old Earthworms',
     ),
   ];
 
@@ -106,6 +128,7 @@ class _CarouselScreenState extends State<CarouselScreen> {
                           imageUrl: item.imageUrl,
                           title: item.title,
                           description: item.description,
+                          header: item.header,
                         ),
                       );
                     }),
@@ -142,6 +165,7 @@ class CardItem {
   final String imageUrl;
   final String title;
   final String description;
+  final String header;
 
-  CardItem({this.imageUrl, this.title, this.description});
+  CardItem({this.imageUrl, this.title, this.description, this.header});
 }
