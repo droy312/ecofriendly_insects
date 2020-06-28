@@ -68,7 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 letterSpacing: 0.5,
                                 color: _selectedIndex == 0
                                     ? Colors.black
-                                    : Colors.grey[800]),
+                                    : Colors.grey[500]),
                           ),
                         ),
                         _selectedIndex == 0
@@ -108,7 +108,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 letterSpacing: 0.5,
                                 color: _selectedIndex == 1
                                     ? Colors.black
-                                    : Colors.grey[800]),
+                                    : Colors.grey[500]),
                           ),
                         ),
                         _selectedIndex == 1
