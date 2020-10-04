@@ -18,20 +18,23 @@ class _ArticleScreenState extends State<ArticleScreen> {
         width: MediaQuery.of(context).size.width - 140,
         margin: EdgeInsets.only(left: 20, right: 20, bottom: 20),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Colors.white70,
           borderRadius: BorderRadius.all(Radius.circular(10.0)),
-          //border: Border.all(color: Color.fromRGBO(40, 40, 40, 1), width: 1.0),
+          //border: Border.all(color: Color.fromRGBO(45, 45, 45, 1), width: 1.0),
           boxShadow: [
             BoxShadow(
               color: Colors.black12,
-              offset: Offset(0.0, 5.0),
-              blurRadius: 10.0,
+              offset: Offset(0.0, 6.0),
+              blurRadius: 12.0,
             )
           ],
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
+            Container(
+              color: Colors.red,
+            ),
             Padding(
               padding: EdgeInsets.all(20),
               child: Text(
@@ -75,7 +78,7 @@ class _ArticleScreenState extends State<ArticleScreen> {
             'header_key': 'header_value',
           });
     } else {
-      throw 'Could not launch $url';
+      throw 'Could\'nt launch $url';
     }
   }
 
@@ -91,7 +94,7 @@ class _ArticleScreenState extends State<ArticleScreen> {
         children: <Widget>[
           SizedBox(height: 20.0),
           card('Insect ecology', 'Wikipedia', 'assets/a2.jpg', 'https://en.wikipedia.org/wiki/Insect_ecology'),
-          card('How do insects contribute to ecosystem services?', 'Scitech Europa', 'assets/a1.jpg', 'https://www.scitecheuropa.eu/ecosystem-services/89862/'),
+          card('How do insects contribute to ecosystem?', 'Scitech Europa', 'assets/a1.jpg', 'https://www.scitecheuropa.eu/ecosystem-services/89862/'),
         ],
       ),
     );
